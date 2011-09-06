@@ -85,6 +85,12 @@ explicitly `require 'pry-editline'` in your `.pryrc`, too.
 Well first, it overrides `ENV['INPUTRC']` so it can do some magic.  And
 then, it does some magic!
 
+Self Promotion
+--------------
+
+Follow [tpope](http://tpo.pe/) on [GitHub](https://github.com/tpope),
+[Twitter](http://twitter.com/tpope), and [Google+](http://tpo.pe/plus).
+
 License
 -------
 
