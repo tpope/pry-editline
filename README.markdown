@@ -40,7 +40,7 @@ RVM, pass it to `rvm install`.  Or better yet, make it the default:
 
     echo rvm_configure_flags=--with-readline-dir=/usr/local >> ~/.rvmrc
 
-To *install* a readline to `/usr/local`, you might consider using
+To *install* readline to `/usr/local`, you might consider using
 Homebrew.  After installing, you need instruct it to link that readline
 into `/usr/local`:
 
