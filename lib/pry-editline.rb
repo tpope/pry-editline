@@ -32,6 +32,7 @@ set keymap vi-insert
 "\C-o": "\C-e  \C-a\t\C-k\C-x\C-l"
 set keymap vi-command
 "o": "A  \C-a\t\C-k\C-x\C-l\e"
+"v": "A  \C-a\t\C-k\C-x\C-l\e"
 set keymap emacs
 "\C-x\C-l": redraw-current-line
 "\C-x\C-e": "\C-e  \C-a\t\C-k\C-x\C-l"

@@ -33,7 +33,7 @@ already works.  It stands for "open".
 > What about vi readline bindings?
 
 They're supported, too.  In addition to `C-x C-e` and `C-o` in insert
-mode, you can use `o` in normal mode.
+mode, you can use `o` or `v` in normal mode.
 
 > It's not working on OS X.
 
