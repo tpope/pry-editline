@@ -30,6 +30,11 @@ You can add an alias for it in `~/.inputrc`.  Observe:
 Actually, I already added `C-o` for you.  So don't add that one.  It
 already works.  It stands for "open".
 
+> What about vi readline bindings?
+
+They're supported, too.  In addition to `C-x C-e` and `C-o` in insert
+mode, you can use `o` in normal mode.
+
 > It's not working on OS X.
 
 By default, readline on OS X uses libedit.  I don't know what that means

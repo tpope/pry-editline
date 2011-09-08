@@ -17,9 +17,29 @@ module PryEditline
 
     require 'tempfile'
     file = Tempfile.new('inputrc')
-    file.puts '"\C-x\C-l": redraw-current-line'
-    file.puts '"\C-x\C-e": "\C-e  \C-a\t\C-k\C-x\C-l"'
-    file.puts '"\C-o":     "\C-e  \C-a\t\C-k\C-x\C-l"'
+    file.puts <<-EOF
+set keymap vi-insert
+"\C-a": beginning-of-line
+"\C-b": backward-char
+"\C-d": delete-char
+"\C-e": end-of-line
+"\C-f": forward-char
+"\C-k": kill-line
+"\C-n": next-history
+"\C-p": previous-history
+"\C-x\C-l": redraw-current-line
+"\C-x\C-e": "\C-e  \C-a\t\C-k\C-x\C-l"
+"\C-o": "\C-e  \C-a\t\C-k\C-x\C-l"
+set keymap vi-command
+"o": "A  \C-a\t\C-k\C-x\C-l\e"
+set keymap emacs
+"\C-x\C-l": redraw-current-line
+"\C-x\C-e": "\C-e  \C-a\t\C-k\C-x\C-l"
+"\C-o":     "\C-e  \C-a\t\C-k\C-x\C-l"
+$if mode=vi
+set keymap vi
+$endif
+EOF
     file.puts "$include #{inputrc}" if inputrc
     file.close
     ENV['INPUTRC'] = file.path
