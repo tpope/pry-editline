@@ -18,8 +18,8 @@ module PryEditline
     require 'tempfile'
     file = Tempfile.new('inputrc')
     file.puts '"\C-x\C-l": redraw-current-line'
-    file.puts '"\C-x\C-e": "  \C-a\t\C-k\C-x\C-l"'
-    file.puts '"\C-o":     "  \C-a\t\C-k\C-x\C-l"'
+    file.puts '"\C-x\C-e": "\C-e  \C-a\t\C-k\C-x\C-l"'
+    file.puts '"\C-o":     "\C-e  \C-a\t\C-k\C-x\C-l"'
     file.puts "$include #{inputrc}" if inputrc
     file.close
     ENV['INPUTRC'] = file.path
