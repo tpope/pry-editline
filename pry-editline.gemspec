@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.name        = 'pry-editline'
   s.version     = '1.1.0'
   s.authors     = ['Tim Pope']
-  s.email       = ["ruby@tpop"+'e.org']
+  s.email       = ["code@tpop"+'e.net']
   s.homepage    = 'https://github.com/tpope/pry-editline'
   s.summary     = 'C-x C-e to invoke an editor on the current pry (or irb) line'
 
