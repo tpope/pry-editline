@@ -17,7 +17,7 @@ module PryEditline
 
     require 'tempfile'
     file = Tempfile.new('inputrc')
-    file.puts <<-EOF
+    file.puts <<-'EOF'
 set keymap vi-insert
 "\C-a": beginning-of-line
 "\C-b": backward-char
