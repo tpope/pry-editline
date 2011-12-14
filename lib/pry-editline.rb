@@ -16,8 +16,8 @@ module PryEditline
     ].compact.detect { |x| File.exist?(x) }
 
     require 'tempfile'
-    file = Tempfile.new('inputrc')
-    file.puts <<-'EOF'
+    @file = Tempfile.new('inputrc')
+    @file.puts <<-'EOF'
 set keymap vi-insert
 "\C-a": beginning-of-line
 "\C-b": backward-char
@@ -41,9 +41,9 @@ $if mode=vi
 set keymap vi
 $endif
 EOF
-    file.puts "$include #{inputrc}" if inputrc
-    file.close
-    ENV['INPUTRC'] = file.path
+    @file.puts "$include #{inputrc}" if inputrc
+    @file.close
+    ENV['INPUTRC'] = @file.path
   end
 
   def self.completion_proc
