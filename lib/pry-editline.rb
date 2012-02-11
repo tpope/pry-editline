@@ -48,7 +48,9 @@ EOF
 
   def self.completion_proc
     lambda do |s|
-      if Readline.point == 0 && Readline.line_buffer =~ /  $/
+      if Readline.respond_to?(:point) && Readline.respond_to?(:line_buffer) &&
+        Readline.point == 0 && Readline.line_buffer =~ /  $/
+      then
         require 'tempfile'
         Tempfile.open(['readline-','.rb']) do |f|
           f.puts(Readline.line_buffer[0..-3])
