@@ -35,6 +35,11 @@ already works.  It stands for "open".
 They're supported, too.  In addition to `C-x C-e` and `C-o` in insert
 mode, you can use `o` or `v` in normal mode.
 
+> It's not working in REE.
+
+REE seems to have an incomplete readline implementation. See [this
+issue](https://github.com/tpope/pry-editline/pull/2).
+
 > It's not working on OS X.
 
 By default, readline on OS X uses libedit.  I don't know what that means
