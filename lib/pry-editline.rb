@@ -68,7 +68,11 @@ end
 
 if defined?(Pry::InputCompleter)
   PryEditline.hijack_inputrc
-  class <<Pry::InputCompleter
+  # Pry 0.9.10 way:
+  completer = Pry::InputCompleter
+  # Pry >0.9.10 way:
+  completer = Pry.config.completer if Pry.config.respond_to? :completer
+  class << completer
     unless method_defined?(:build_completion_proc_without_edit)
       alias build_completion_proc_without_edit build_completion_proc
 
