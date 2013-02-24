@@ -40,53 +40,38 @@ issue](https://github.com/tpope/pry-editline/pull/2).
 
 > It's not working on OS X.
 
-By default, Readline on OS X uses libedit.  I don't know what that means
-exactly other than it leaves you with a horribly crippled Readline that
-doesn't work with pry-editline.  To link against a different Readline,
-pass the `--with-readline-dir=` flag to `./configure`.  If you're using
-RVM, pass it to `rvm install`.  Or better yet, make it the default:
-
-    echo rvm_configure_flags=--with-readline-dir=/usr/local >> ~/.rvmrc
-
-To *install* Readline to `/usr/local`, you might consider using
-Homebrew.  After installing, you need instruct it to link that Readline
-into `/usr/local`:
+OS X ships with the Readline replacement Editline rather than GNU Readline.
+It's a horribly crippled replacement, and it won't work with pry-editline.
+The simplest way to get a proper Readline is with [Homebrew][]:
 
     brew install readline
-    brew link readline
 
-Actually for me, it went more like:
+You'll need to tell Ruby to use this Readline when configuring it.  If you're
+compiling by hand, give it as an option to `./configure`:
 
-    $ brew install readline
-    ...
-    $ brew link readline
-    Error: readline has multiple installed versions
-    $ brew link readline 6.2.1
-    Error: readline has multiple installed versions
-    $ brew link readline -v6.2.1
-    Error: readline has multiple installed versions
-    $ brew link -v6.2.1 readline
-    Error: readline has multiple installed versions
-    $ brew remove readline
-    Error: readline has multiple installed versions
-    Use `brew remove --force readline` to remove all versions.
-    $ brew remove -v6.1 readline
-    Error: readline has multiple installed versions
-    Use `brew remove --force readline` to remove all versions.
-    $ brew remove --force readline
-    Uninstalling readline...
-    $ brew install readline
-    ...
-    $ brew link readline
+    ./configure --with-readline-dir=$(brew --prefix readline)
 
-Yeah, it's a bit of a pain.  Sorry your OS hates you. :(
+If you use rbenv, check out the [rbenv-readline][] plugin to automatically
+pass this option when compiling.  If you're using RVM, you can set configure
+options in your `.rvmrc`:
+
+    echo rvm_configure_flags=--with-readline-dir=$(brew --prefix readline) \
+      >> ~/.rvmrc
+
+[Homebrew]: http://mxcl.github.com/homebrew/
+[rbenv-readline]: https://github.com/tpope/rbenv-readline
 
 > It's not working with `rails console`/my Bundler setup.
 
-[Here's one potential workaround][workaround].  You might have to
-explicitly `require 'pry-editline'` in your `.pryrc`, too.
+If you can't/won't add it to your `Gemfile`, try this hack in your `.pryrc`:
 
-[workaround]: https://github.com/carlhuda/bundler/issues/183#issuecomment-1149953
+    Gem.path.each do |gemset|
+      $:.concat(Dir.glob("#{gemset}/gems/pry-*/lib"))
+    end if defined?(Bundler)
+    $:.uniq!
+    require 'pry-editline'
+
+Let me know if you come up with something better.
 
 > How does it work?
 
