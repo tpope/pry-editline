@@ -28,28 +28,28 @@ You can add an alias for it in `~/.inputrc`.  Observe:
 Actually, I already added `C-o` for you.  So don't add that one.  It
 already works.  It stands for "open".
 
-> What about vi readline bindings?
+> What about vi Readline bindings?
 
 They're supported, too.  In addition to `C-x C-e` and `C-o` in insert
 mode, you can use `o` or `v` in normal mode.
 
 > It's not working in REE.
 
-REE seems to have an incomplete readline implementation. See [this
+REE seems to have an incomplete Readline implementation. See [this
 issue](https://github.com/tpope/pry-editline/pull/2).
 
 > It's not working on OS X.
 
-By default, readline on OS X uses libedit.  I don't know what that means
-exactly other than it leaves you with a horribly crippled readline that
-doesn't work with pry-editline.  To link against a different readline,
+By default, Readline on OS X uses libedit.  I don't know what that means
+exactly other than it leaves you with a horribly crippled Readline that
+doesn't work with pry-editline.  To link against a different Readline,
 pass the `--with-readline-dir=` flag to `./configure`.  If you're using
 RVM, pass it to `rvm install`.  Or better yet, make it the default:
 
     echo rvm_configure_flags=--with-readline-dir=/usr/local >> ~/.rvmrc
 
-To *install* readline to `/usr/local`, you might consider using
-Homebrew.  After installing, you need instruct it to link that readline
+To *install* Readline to `/usr/local`, you might consider using
+Homebrew.  After installing, you need instruct it to link that Readline
 into `/usr/local`:
 
     brew install readline
