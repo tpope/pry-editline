@@ -6,7 +6,7 @@ there that will let me spawn an editor and evaluate the result, but
 that's not what I need.  Usually I'm about 80 characters or so into a
 hairy one-liner when I think, "you know, I really wish I was in Vim
 right about now."  In Bash, one can load the current command line into
-an editor with `C-x C-e`.  And now, you can do so in IRB and Pry.
+an editor with `C-x C-e`.  And now, you can do the same in IRB and Pry.
 
 The gem is named after [Pry][] so that it will be automatically loaded
 as a Pry plugin (and because, let's face it, that's a good train to
