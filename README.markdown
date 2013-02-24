@@ -1,5 +1,4 @@
-pry-editline
-------------
+# pry-editline
 
 Whenever I'm using IRB or [Pry][], my editor always feels too far away.
 Yes, there are [various gems](http://utilitybelt.rubyforge.org/) out
@@ -16,8 +15,7 @@ hitch our wagon to).  But it also works in IRB if you add `require
 
 [Pry]: http://pry.github.com/
 
-FAQ
----
+## FAQ
 
 > `C-x C-e` is too hard to type.
 
@@ -95,13 +93,11 @@ explicitly `require 'pry-editline'` in your `.pryrc`, too.
 Well first, it overrides `ENV['INPUTRC']` so it can do some magic.  And
 then, it does some magic!
 
-Self Promotion
---------------
+## Self Promotion
 
 Follow [tpope](http://tpo.pe/) on [GitHub](https://github.com/tpope),
 [Twitter](http://twitter.com/tpope), and [Google+](http://tpo.pe/plus).
 
-License
--------
+## License
 
 Copyright (c) Tim Pope.  MIT License.
