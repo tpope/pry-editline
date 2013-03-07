@@ -8,6 +8,16 @@ module PryEditline
     end
   end
 
+  def self.edit(file)
+    if defined?(Pry::Editor.invoke_editor)
+      Pry::Editor.invoke_editor(file, 1, true)
+    elsif editor.is_a?(Proc)
+      system(editor.call(file, 1, true))
+    else
+      system("#{editor} #{file}")
+    end
+  end
+
   def self.hijack_inputrc
     inputrc = [
       ENV['INPUTRC'],
@@ -55,7 +65,7 @@ EOF
         Tempfile.open(['readline-','.rb']) do |f|
           f.puts(Readline.line_buffer[0..-3])
           f.close
-          system("#{editor} #{f.path}")
+          edit(f.path)
           File.read(f.path).chomp
         end
       else
